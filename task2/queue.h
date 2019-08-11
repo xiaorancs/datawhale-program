@@ -9,8 +9,12 @@
 #define DATAWHALE_QUEUE_H
 
 #include <memory.h>
+#include <stdlib.h>
+#include <assert.h>
+
 
 namespace datawhale {
+typedef size_t uint32_t;
 
 template<class T, uint32_t dw_size = 1024>
 class Queue {

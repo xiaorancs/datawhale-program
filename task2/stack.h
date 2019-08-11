@@ -8,9 +8,12 @@
 #ifndef DATAWHALE_STACK_H
 #define DATAWHALE_STACK_H
 
+#include <stdlib.h>
 #include <memory.h>
+#include <assert.h>
 
 namespace datawhale {
+typedef size_t uint32_t;
 
 template<class T, uint32_t dw_size = 1024>
 class Stack {

@@ -3,16 +3,17 @@
 #include <vector>
 #include <algorithm>
 
-#include "stack.h"
+#include "stack_list.h"
 
 // using namespace datawhale;
 using namespace std;
 
 bool isValid(string s) {
-    datawhale::Stack<char> sta;
+    datawhale::StackList<char> sta;
     for(int i = 0; i < s.size(); i ++) {
         if (s[i] == '[' || s[i] == '{' || s[i] == '(') {
             sta.push(s[i]);
+            // cout << sta.top() << endl;
         }
         else if (s[i] == ']' && !sta.empty() && sta.top() == '[') {
             sta.pop();
@@ -31,7 +32,7 @@ bool isValid(string s) {
 }
 
 int longestValidParentheses(string s) {
-    datawhale::Stack<int> sta;
+    datawhale::StackList<int> sta;
     int start = 0;
     int ans = 0;
     int maxLen = 0;
@@ -65,10 +66,9 @@ bool is_op(string s) {
     return false;
 }
 
-
 int evalRPN(vector<string>& tokens) {
     if (tokens.size() == 1) return stoi(tokens[0]);
-    datawhale::Stack<int, 1024000> data;
+    datawhale::StackList<int> data;
     for (int i = 0; i < tokens.size(); i ++) {
         if (tokens[i] == "+") {
             int a = data.top();
@@ -112,9 +112,9 @@ int main()
     string s = "([)]";
     cout << longestValidParentheses(")()()") << endl;
     // cout << isValid("(]") << endl;
-    datawhale::Stack<int> a;
+    datawhale::StackList<int> a;
     a.push(6);
-    datawhale::Stack<int> b(a);
+    datawhale::StackList<int> b(a);
     cout << b.top() << endl;
     return 0;
 }
